@@ -39,13 +39,8 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getUserByIdentification(identification));
     }
 
-    @DeleteMapping("/{identification}")
-    public ResponseEntity<?> deleteUser(String identification){
-        try {
-            userService.deleteUser(identification);
-            return new ResponseEntity<>(ResponseEntity.ok(), HttpStatus.ACCEPTED);
-        }catch (NotFoundException e){
-            return new ResponseEntity<>(e, HttpStatus.NOT_FOUND);
-        }
+    @DeleteMapping("/delete/{identification}")
+    public ResponseEntity<?> deleteUser(@PathVariable String identification){
+        return ResponseEntity.ok().body(userService.deleteUser(identification));
     }
 }

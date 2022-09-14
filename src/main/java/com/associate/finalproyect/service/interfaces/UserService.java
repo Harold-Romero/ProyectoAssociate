@@ -11,5 +11,5 @@ public interface UserService {
     User updateUser (UserRequest request);
     User getUserByIdentification(String identification);
     List<User> getAllUsers();
-    void deleteUser(String identification);
+    String deleteUser(String identification);
 }
