@@ -6,9 +6,8 @@ import lombok.ToString;
 @Getter
 @ToString
 public class ErrorMessage {
-    private String exception;
-    private String message;
-    //private String path;
+    private final String exception;
+    private final String message;
 
     public ErrorMessage(Exception exception, String message) {
         this.exception = exception.getClass().getSimpleName();

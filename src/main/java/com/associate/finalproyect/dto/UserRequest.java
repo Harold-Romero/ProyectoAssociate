@@ -2,35 +2,37 @@ package com.associate.finalproyect.dto;
 
 import com.associate.finalproyect.entity.IdentificationType;
 import lombok.Data;
+import org.springframework.context.MessageSource;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
 @Data
 public class UserRequest {
 
     private IdentificationType identificationType;
-    @NotEmpty(message = "user.entity.nuId.empty")
-    @Size(min = 6, max = 30, message = "user.entity.nuId.length")
-    @Pattern(regexp = "[0-9]+", message = "user.entity.nuId.pattern")
+    @NotEmpty(message = "El numero de identificacion del usuario no puede estar vacio")
+    @Size(min = 6, max = 30, message = "El numero de identificacion del usuario debe contener entre 6 y 30 caracteres")
+    @Pattern(regexp = "[0-9]+", message = "El numero de identificacion del usuario no puede contener caracteres especiales")
     private String identificationNumber;
-    @NotEmpty(message = "user.entity.firstname.empty")
-    @Size(min = 3, max = 20, message = "user.entity.firstname.length")
-    @Pattern(regexp = "[a-zA-Z0-9À-ÿ\\s]+", message = "user.entity.firstname.pattern")
+    @NotEmpty(message = "El nombre del usuario no puede estar vacio")
+    @Size(min = 3, max = 20, message = "El nombre del usuario debe contener entre 6 y 20 caractere")
+    @Pattern(regexp = "[a-zA-Z0-9À-ÿ\\s]+", message = "El nombre del usuario no puede contener caracteres especiales")
     private String name;
-    @NotEmpty(message = "user.entity.lastname.empty")
-    @Size(min = 3, max = 20, message = "user.entity.lastname.length")
-    @Pattern(regexp = "[a-zA-Z0-9À-ÿ\\s]+", message = "user.entity.lastname.pattern")
+    @NotEmpty(message = "El apellido del usuario no puede estar vacío")
+    @Size(min = 3, max = 20, message = "El apellido del usuario debe contener entre 3 y 20 caracteres")
+    @Pattern(regexp = "[a-zA-Z0-9À-ÿ\\s]+", message = "El apellido del usuario no puede contener caracteres especiales")
     private String lastname;
-    @NotEmpty(message = "user.entity.address.empty")
-    @Size(min = 3, max = 20, message = "user.entity.address.length")
+    @NotEmpty(message = "La dirección del usuario no puede estar vacía")
+    @Size(min = 3, max = 20, message = "La dirección del usuario debe contener entre 6 y 50 caracteres")
     private String address;
-    @NotEmpty(message = "user.entity.telephone.empty")
-    @Size(min = 7, max = 15, message = "user.entity.telephone.length")
-    @Pattern(regexp = "[0-9]+", message = "user.entity.telephone.pattern")
+    @NotEmpty(message = "El numero de telefono del usuario no puede estar vacio")
+    @Size(min = 7, max = 15, message = "El numero de telefono del usuario debe contener entre 7 y 15 caracteres")
+    @Pattern(regexp = "[0-9]+", message = "El numero de telefono del usuario solo puede contener numeros")
     private String phoneNumber;
-    @NotEmpty(message = "user.entity.email.empty")
-    @Size(min = 6, max = 50, message = "user.entity.email.length")
-    @Pattern(regexp = "^[^@]+@[^@]+\\.[a-zA-Z]{2,}$", message = "user.entity.email.pattern")
+    @NotEmpty(message = "El correo electronico del usuario no puede estar vacio")
+    @Size(min = 6, max = 50, message = "El correo electronico del usuario debe contener entre 6 y 50 caracteres")
+    @Pattern(regexp = "^[^@]+@[^@]+\\.[a-zA-Z]{2,}$", message = "El correo no contiene la estructura correcta. Ejemplo (ejemplo@email.com)")
     private String email;
 }

@@ -1,7 +1,6 @@
 package com.associate.finalproyect.controller;
 
 import com.associate.finalproyect.dto.UserRequest;
-import com.associate.finalproyect.exception.listexceptions.NotFoundException;
 import com.associate.finalproyect.service.interfaces.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,11 @@ public class UserController {
 
     @PostMapping("/create")
     public ResponseEntity<?> createUser(@Valid @RequestBody UserRequest request){
-        return ResponseEntity.ok().body(userService.createUser(request));
+        try {
+            return ResponseEntity.ok().body(userService.createUser(request));
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/update")

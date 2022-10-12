@@ -7,6 +7,7 @@ import com.associate.finalproyect.exception.listexceptions.FieldInvalidException
 import com.associate.finalproyect.exception.listexceptions.NotFoundException;
 import com.associate.finalproyect.repository.UserRepository;
 import com.associate.finalproyect.service.interfaces.UserService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
@@ -19,11 +20,13 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
-    private final MessageSource messageSource;
+    private final String USERCONFLICT = "El número de identificación o el email ingresado ya pertenecen a otro usuario";
+    private final String USERNOTFOUND = "El número de identificación no se encuentra registrado en base de datos";
+    private final String FIELDINVALID = "Debe contener un tipo de documento para la creación de usuarios";
+    private final String USERDELETED = "Usuario eliminado con éxito";
 
-    public UserServiceImpl(UserRepository repository, MessageSource messageSource) {
+    public UserServiceImpl(UserRepository repository) {
         this.repository = repository;
-        this.messageSource = messageSource;
     }
 
     @Override
@@ -36,7 +39,7 @@ public class UserServiceImpl implements UserService {
                 (userIdentification.isEmpty() || !userIdentification.get().isStatus()) && !userEmail.get().isStatus()){
             User user = new User();
             if (request.getIdentificationType() == null){
-                throw new FieldInvalidException(messageSource.getMessage("user.incomplete", null, LocaleContextHolder.getLocale()));
+                throw new FieldInvalidException(FIELDINVALID);
             }
             user.setIdentificationType(request.getIdentificationType());
             user.setIdentificationNumber(request.getIdentificationNumber());
@@ -48,7 +51,7 @@ public class UserServiceImpl implements UserService {
             user.setStatus(true);
             return repository.save(user);
         } else {
-            throw new ConflictException(messageSource.getMessage("user.duplicate.error", null, LocaleContextHolder.getLocale()));
+            throw new ConflictException(USERCONFLICT);
         }
     }
 
@@ -71,10 +74,10 @@ public class UserServiceImpl implements UserService {
 
                 return repository.save(userUpdate);
             }else {
-                throw new ConflictException(messageSource.getMessage("user.duplicate.error", null, LocaleContextHolder.getLocale()));
+                throw new ConflictException(USERCONFLICT);
             }
         }else {
-            throw new NotFoundException(messageSource.getMessage("user.notfound", null, LocaleContextHolder.getLocale()));
+            throw new NotFoundException(USERNOTFOUND);
         }
     }
 
@@ -85,7 +88,7 @@ public class UserServiceImpl implements UserService {
         if (userDb.isPresent()){
             return userDb.get();
         }else {
-            throw new NotFoundException(messageSource.getMessage("user.notfound", null, LocaleContextHolder.getLocale()));
+            throw new NotFoundException(USERNOTFOUND);
         }
     }
 
@@ -102,9 +105,9 @@ public class UserServiceImpl implements UserService {
             User userDelete = userDb.get();
             userDelete.setStatus(false);
             repository.save(userDelete);
-            return messageSource.getMessage("user.deleted", null, LocaleContextHolder.getLocale());
+            return USERDELETED;
         }else {
-            throw new NotFoundException("user.notfound");
+            throw new NotFoundException(USERNOTFOUND);
         }
     }
 }
