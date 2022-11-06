@@ -17,6 +17,10 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import javax.servlet.http.HttpServletRequest;
 import java.nio.file.AccessDeniedException;
 
+/**
+ * Development by Harol Romero
+ * This class implements the errors customization
+ */
 @ControllerAdvice
 public class ApiExceptionHandler {
 
@@ -66,7 +70,6 @@ public class ApiExceptionHandler {
 
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler({
-            UnauthorizedException.class,
             AccessDeniedException.class
     })
     public void unAuthorized(Exception exception){

@@ -2,6 +2,10 @@ package com.associate.finalproyect.exception.listexceptions;
 
 import lombok.Data;
 
+/**
+ * Development by Harol Romero
+ * This class implements the FieldInvalidException error customization
+ */
 @Data
 public class FieldInvalidException extends RuntimeException{
     private static final String DESCRIPTION = "Field Invalid Exception (417)";

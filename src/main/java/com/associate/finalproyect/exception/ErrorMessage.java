@@ -3,6 +3,10 @@ package com.associate.finalproyect.exception;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * Development by Harol Romero
+ * This class implements the way to present the error to the API.
+ */
 @Getter
 @ToString
 public class ErrorMessage {

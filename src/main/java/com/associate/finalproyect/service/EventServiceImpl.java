@@ -10,6 +10,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Development by Harol Romero
+ * This class is the implementing for the event service.
+ */
 @Service
 public class EventServiceImpl implements EventService {
 

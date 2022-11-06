@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Development by Harol Romero
+ * This class implements the controller to the event
+ */
 @RestController
 @RequestMapping("/event")
 public class EventController {

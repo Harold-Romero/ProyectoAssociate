@@ -6,6 +6,10 @@ import com.associate.finalproyect.entity.EventAttendance;
 
 import java.util.List;
 
+/**
+ * Development by Harol Romero
+ * This interface is the methods firm for the event attendance service.
+ */
 public interface EventAttendanceService {
     EventAttendance createEventAttendance(EventAttendanceRequest request);
     EventAttendance updateEventAttendance(CommentAndQualify request, Long id);

@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+/**
+ * Development by Harol Romero
+ * This class implements the controller to the users
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {

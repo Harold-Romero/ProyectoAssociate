@@ -5,6 +5,10 @@ import com.associate.finalproyect.entity.User;
 
 import java.util.List;
 
+/**
+ * Development by Harol Romero
+ * This interface is the methods firm for the users service.
+ */
 public interface UserService {
 
     User createUser (UserRequest request);

@@ -4,6 +4,10 @@ import com.associate.finalproyect.entity.Event;
 import com.associate.finalproyect.entity.User;
 import lombok.Data;
 
+/**
+ * Development by Harol Romero
+ * This class implements the model to receive data of the attendance
+ */
 @Data
 public class EventAttendanceRequest {
 

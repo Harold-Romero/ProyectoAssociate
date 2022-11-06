@@ -7,6 +7,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+/**
+ * Development by Harol Romero
+ * This class implements the model for receiving data from users and restricts the data that is received
+ */
 @Data
 public class UserRequest {
 

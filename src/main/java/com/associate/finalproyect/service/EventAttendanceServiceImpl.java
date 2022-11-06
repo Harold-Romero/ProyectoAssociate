@@ -13,17 +13,26 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * Development by Harol Romero
+ * This class is the implementing for the event attendance service.
+ */
 @Service
 public class EventAttendanceServiceImpl implements EventAttendanceService {
 
-    private final EventAttendanceRepository repository;
-    private final String EVENTNOTFOUND = "El evento buscado no se encuentra";
-    private final String EVENTNOTFOUNDREGISTER = "El registro al evento buscado no se encuentra";
+    private final EventAttendanceRepository repository; // service implementing "eventAttendance"
+    private final String EVENTNOTFOUND = "El evento buscado no se encuentra"; // constant for the error EventNotFound
+    private final String EVENTNOTFOUNDREGISTER = "El registro al evento buscado no se encuentra"; // constant for the error Record NotFound
 
     public EventAttendanceServiceImpl(EventAttendanceRepository repository) {
         this.repository = repository;
     }
 
+    /**
+     * Method that create the event attendance registers
+     * @param request = data to create
+     * @return = this method return a attendance created or error if not found data
+     */
     @Override
     public EventAttendance createEventAttendance(EventAttendanceRequest request) {
         Optional<List<EventAttendance>> eventAttendanceDb = repository.findByEvent_Id(request.getEvent().getId());
@@ -45,6 +54,12 @@ public class EventAttendanceServiceImpl implements EventAttendanceService {
         return repository.save(eventAttendance);
     }
 
+    /**
+     * Method that update the event attendance registers
+     * @param id = id registered in database
+     * @param request = data uptaded
+     * @return = this method return a attendance updated or error if not found the register or data
+     */
     @Override
     public EventAttendance updateEventAttendance(CommentAndQualify request, Long id) {
         Optional<EventAttendance> eventAttendanceDb = repository.findById(id);

@@ -4,6 +4,10 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+/**
+ * Development by Harol Romero
+ * This class implements the model that persist in database for the event attendance table
+ */
 @Entity
 @Table(name = "tbl_event_attendance")
 @Data

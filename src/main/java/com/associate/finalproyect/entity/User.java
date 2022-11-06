@@ -4,6 +4,10 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+/**
+ * Development by Harol Romero
+ * This class implements the model that persist in database for the users table
+ */
 @Entity
 @Table(name = "tbl_users")
 @Data

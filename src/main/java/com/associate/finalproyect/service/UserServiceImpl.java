@@ -7,15 +7,16 @@ import com.associate.finalproyect.exception.listexceptions.FieldInvalidException
 import com.associate.finalproyect.exception.listexceptions.NotFoundException;
 import com.associate.finalproyect.repository.UserRepository;
 import com.associate.finalproyect.service.interfaces.UserService;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * Development by Harol Romero
+ * This class is the implementing for the users service.
+ */
 @Service
 public class UserServiceImpl implements UserService {
 
