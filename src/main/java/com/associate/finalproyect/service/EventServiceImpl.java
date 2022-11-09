@@ -37,6 +37,12 @@ public class EventServiceImpl implements EventService {
         return repository.save(event);
     }
 
+    /**
+     * Method that update the event registers
+     * @param id = id registered in database
+     * @param request = data uptaded
+     * @return = this method return an event updated or error if not found the register or data
+     */
     @Override
     public Event updateEvent(EventRequest request, Long id) {
         Optional<Event> eventDb = repository.findById(id);
@@ -51,6 +57,11 @@ public class EventServiceImpl implements EventService {
         }
     }
 
+    /**
+     * Method that get a event
+     * @param id = id registered event
+     * @return = this method return a specific attendance
+     */
     @Override
     public Event getEventById(Long id) {
         Optional<Event> eventDb = repository.findById(id);
@@ -62,6 +73,10 @@ public class EventServiceImpl implements EventService {
         }
     }
 
+    /**
+     * Method that get all the events
+     * @return = this method return all events registers of the database
+     */
     @Override
     public List<Event> getAllEvents() {
         return repository.findAll();
