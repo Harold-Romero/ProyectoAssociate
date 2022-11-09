@@ -20,7 +20,7 @@ import java.util.Optional;
 @Service
 public class EventAttendanceServiceImpl implements EventAttendanceService {
 
-    private final EventAttendanceRepository repository; // service implementing "eventAttendance"
+    private final EventAttendanceRepository repository; // service that instantiates "eventAttendanceRepository"
     private final String EVENTNOTFOUND = "El evento buscado no se encuentra"; // constant for the error EventNotFound
     private final String EVENTNOTFOUNDREGISTER = "El registro al evento buscado no se encuentra"; // constant for the error Record NotFound
 
@@ -58,7 +58,7 @@ public class EventAttendanceServiceImpl implements EventAttendanceService {
      * Method that update the event attendance registers
      * @param id = id registered in database
      * @param request = data uptaded
-     * @return = this method return a attendance updated or error if not found the register or data
+     * @return = this method return an attendance updated or error if not found the register or data
      */
     @Override
     public EventAttendance updateEventAttendance(CommentAndQualify request, Long id) {
@@ -74,6 +74,11 @@ public class EventAttendanceServiceImpl implements EventAttendanceService {
         }
     }
 
+    /**
+     * Method that get a specific attendance
+     * @param id = id registered event
+     * @return = this method return a specific attendance
+     */
     @Override
     public EventAttendance getEventAttendanceById(Long id) {
         Optional<EventAttendance> eventAttendanceDb = repository.findById(id);
@@ -85,11 +90,20 @@ public class EventAttendanceServiceImpl implements EventAttendanceService {
         }
     }
 
+    /**
+     * Method that get all the attendance of all events
+     * @return = this method return all attendance registers of the database
+     */
     @Override
     public List<EventAttendance> getAllEventAttendance() {
         return repository.findAll();
     }
 
+    /**
+     * Method that get all the attendance a specific event
+     * @param id = id registered event
+     * @return = this method return a list with all attenders
+     */
     @Override
     public List<EventAttendance> getAllEventAttendanceByEventId(Long id) {
         Optional<List<EventAttendance>> eventAttendances = repository.findByEvent_Id(id);
