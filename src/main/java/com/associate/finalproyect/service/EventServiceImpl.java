@@ -18,7 +18,7 @@ import java.util.Optional;
 public class EventServiceImpl implements EventService {
 
     private final EventRepository repository; // service that instantiates "eventRepository"
-    private final String EVENTNOTFOUND = "El evento buscado no se encuentra registrado";
+    private final String EVENTNOTFOUND = "El evento buscado no se encuentra registrado"; // this constant for not found error
 
     public EventServiceImpl(EventRepository repository) {
         this.repository = repository;
